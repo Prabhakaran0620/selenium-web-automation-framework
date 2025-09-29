@@ -1,9 +1,10 @@
-package web_automation.Test;
+package sample;
 
-import web_automation.Base.*;
 import org.testng.annotations.Test;
 
-public class LoginTest extends BaseTest {
+import baseClass.*;
+
+public class LoginTest_InitialTestRun extends BaseTest {
 
     @Test
     public void sampleTest() {
