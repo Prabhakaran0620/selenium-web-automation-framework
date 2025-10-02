@@ -9,8 +9,14 @@ import io.cucumber.junit.CucumberOptions;
 @CucumberOptions(
     features = "src/test/java/features",
     glue = {"stepDefinition"},
-    plugin = {"pretty", "html:target/cucumber-reports"},
-    monochrome = true
+    plugin = {
+//    		"pretty", 
+    		"summary", 
+    		"html:target/cucumber-reports", 
+    		"json:target/cucumber.json"
+    		},
+    monochrome = true,
+    tags = "@LoginTestRun"
 )
 
 
