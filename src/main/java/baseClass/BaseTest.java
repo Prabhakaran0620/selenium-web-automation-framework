@@ -37,6 +37,8 @@ public class BaseTest {
 	}
     
     public void launchBrowser(String browser) {
+        String driverPath = System.getProperty("user.dir") + "\\src\\test\\resources\\drivers\\";
+
         switch (browser.toLowerCase()) {
             case "chrome":
                 WebDriverManager.chromedriver().setup();
@@ -44,12 +46,12 @@ public class BaseTest {
                 break;
 
             case "firefox":
-                WebDriverManager.firefoxdriver().setup();
+                System.setProperty("webdriver.gecko.driver", driverPath + "geckodriver.exe");
                 driver = new FirefoxDriver();
                 break;
 
             case "edge":
-                WebDriverManager.edgedriver().setup();
+                System.setProperty("webdriver.edge.driver", driverPath + "msedgedriver.exe");
                 driver = new EdgeDriver();
                 break;
 
