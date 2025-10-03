@@ -64,5 +64,11 @@ public class BaseStepDefinition extends BaseTest {
 		quitBrowser();
 		System.out.println("  *****  Browser closed  *****");
 	}
+	
+    @Then("Wait for {string} seconds")
+    public void wait_for_seconds(String seconds) throws Throwable {
+        waitForNSec(Integer.parseInt(seconds));
+		System.out.println("  *****  " + seconds + " Sec Wait Completed  *****");
+    }
 
 }
