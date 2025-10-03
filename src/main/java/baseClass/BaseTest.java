@@ -1,14 +1,18 @@
 package baseClass;
 
+import java.io.File;
 import java.time.Duration;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.concurrent.TimeoutException;
 import java.util.function.Function;
+import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.OutputType;
 import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -35,6 +39,10 @@ public class BaseTest {
 	public static WebDriver getdriver() {
 	    return driver;
 	}
+	
+    public static void setDriver(WebDriver driverInstance) {
+        driver = driverInstance;
+    }
     
     public void launchBrowser(String browser) {
         String driverPath = System.getProperty("user.dir") + "\\src\\test\\resources\\drivers\\";
@@ -44,13 +52,14 @@ public class BaseTest {
                 WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver();
                 break;
-
+                
             case "firefox":
-                System.setProperty("webdriver.gecko.driver", driverPath + "geckodriver.exe");
+                WebDriverManager.firefoxdriver().setup();
                 driver = new FirefoxDriver();
                 break;
 
             case "edge":
+//            	WebDriverManager.edgedriver().setup();
                 System.setProperty("webdriver.edge.driver", driverPath + "msedgedriver.exe");
                 driver = new EdgeDriver();
                 break;
@@ -186,5 +195,42 @@ public class BaseTest {
 		Assert.assertTrue(element.isDisplayed());
 		System.out.println("element displayed is:" + element.getText());
 	}
+    
+    public static String takeSnapShot(String file) throws Exception {
+        String fileWithPath = System.getProperty("user.dir") +"\\src\\test\\java\\screenshots\\"+ File.separator + file;
+        try {
+            TakesScreenshot scrShot = ((TakesScreenshot) getdriver());
+            File SrcFile = scrShot.getScreenshotAs(OutputType.FILE);
+            File DestFile = new File(fileWithPath);
+            FileUtils.copyFile(SrcFile, DestFile);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println(fileWithPath);
+        return fileWithPath;
+    }
+    
+    public static void waitForNSec(int seconds) throws InterruptedException {
+        if (seconds <= 0) {
+            System.out.println("Provided wait time is zero or negative. Skipping wait.");
+            return;
+        }
+
+        int minutes = seconds / 60;
+        int remainingSeconds = seconds % 60;
+
+        System.out.println("Waiting for " + seconds + " seconds...");
+
+        for (int i = 1; i <= minutes; i++) {
+            Thread.sleep(60 * 1000); // Sleep for 1 minute
+            System.out.println(i + " minute" + (i > 1 ? "s" : "") + " completed...");
+        }
+
+        if (remainingSeconds > 0) {
+            Thread.sleep(remainingSeconds * 1000);
+        }
+
+//        System.out.println("Total wait of " + seconds + " seconds completed.");
+    }
 
 }
