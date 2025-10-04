@@ -196,18 +196,28 @@ public class BaseTest {
 		System.out.println("element displayed is:" + element.getText());
 	}
     
-    public static String takeSnapShot(String file) throws Exception {
-        String fileWithPath = System.getProperty("user.dir") +"\\src\\test\\java\\screenshots\\"+ File.separator + file;
+    public static String takeSnapShot(String fileName) throws Exception {
         try {
+            // Define screenshot folder inside test-output
+            String screenshotDir = System.getProperty("user.dir") + "/test-output/screenshots/";
+            new File(screenshotDir).mkdirs(); // Ensure directory exists
+
+            // Full path to save screenshot
+            String filePath = screenshotDir + fileName;
+
+            // Capture screenshot
             TakesScreenshot scrShot = ((TakesScreenshot) getdriver());
-            File SrcFile = scrShot.getScreenshotAs(OutputType.FILE);
-            File DestFile = new File(fileWithPath);
-            FileUtils.copyFile(SrcFile, DestFile);
+            File srcFile = scrShot.getScreenshotAs(OutputType.FILE);
+            File destFile = new File(filePath);
+            FileUtils.copyFile(srcFile, destFile);
+
+            System.out.println("Screenshot saved at: " + filePath);
+            return filePath;
+
         } catch (Exception e) {
             e.printStackTrace();
+            return null;
         }
-        System.out.println(fileWithPath);
-        return fileWithPath;
     }
     
     public static void waitForNSec(int seconds) throws InterruptedException {
