@@ -21,7 +21,7 @@
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
-			<version>4.20.0</version>
+			<version>4.12.1</version>
 		</dependency>
 
 		<!-- WebDriverManager (for auto driver management) -->
@@ -32,11 +32,10 @@
 		</dependency>
 
 		<!-- TestNG (if you prefer over JUnit) -->
-
 		<dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
-			<version>7.8.0</version> <!-- or latest -->
+			<version>7.9.0</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -59,6 +58,20 @@
 			<artifactId>junit</artifactId>
 			<version>4.13.2</version>
 			<scope>test</scope>
+		</dependency>
+
+		<!-- ExtentReports -->
+		<dependency>
+			<groupId>com.aventstack</groupId>
+			<artifactId>extentreports</artifactId>
+			<version>5.1.1</version>
+		</dependency>
+
+		<!-- ExtentReports + Cucumber Adapter -->
+		<dependency>
+			<groupId>tech.grasshopper</groupId>
+			<artifactId>extentreports-cucumber7-adapter</artifactId>
+			<version>1.8.0</version>
 		</dependency>
 
 	</dependencies>
