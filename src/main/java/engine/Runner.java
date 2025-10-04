@@ -12,8 +12,9 @@ import io.cucumber.junit.CucumberOptions;
     plugin = {
 //    		"pretty", 
     		"summary", 
-    		"html:target/cucumber-reports", 
-    		"json:target/cucumber.json"
+            "json:target/cucumber-report/cucumber.json",
+            "html:target/cucumber-report/cucumber.html",
+            "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
     		},
     monochrome = true,
     tags = "@LoginTestRun"
