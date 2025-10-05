@@ -2,7 +2,9 @@ package stepDefinition;
 
 import baseClass.BaseTest;
 import io.cucumber.java.After;
+import io.cucumber.java.AfterAll;
 import io.cucumber.java.Before;
+import io.cucumber.java.BeforeAll;
 import io.cucumber.java.Scenario;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
@@ -11,9 +13,12 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import org.apache.commons.io.FileUtils;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+import java.io.File;
+import java.io.IOException;
 import java.nio.file.*;
 import Utility.ConfigReader;
 
@@ -23,6 +28,13 @@ public class Hooks {
 	public static ExtentReports extent;
 	public static ExtentTest test;
 	public static ExtentSparkReporter spark;
+
+	@BeforeAll
+	public static void setupExtentReport() {
+		ExtentSparkReporter spark = new ExtentSparkReporter("test-output/SparkReport/ExtentReport.html");
+		extent = new ExtentReports();
+		extent.attachReporter(spark);
+	}
 
 	@Before(order = 0)
 	public void before(Scenario scenario) {
@@ -47,9 +59,12 @@ public class Hooks {
 				scenarioStatusMap.put(scenarioName, "PASS");
 				System.out.println(scenarioName + " test Execution Passed");
 
-				// You can optionally log pass to extent
-				Hooks.test = Hooks.extent.createTest(scenarioName);
-				Hooks.test.pass("Scenario passed ✅");
+				if (Hooks.extent != null) {
+					Hooks.test = Hooks.extent.createTest(scenarioName);
+					Hooks.test.pass("Scenario passed ✅");
+				} else {
+					System.out.println("⚠️ Extent report not initialized.");
+				}
 
 			} else {
 				scenarioStatusMap.put(scenarioName, "FAIL");
@@ -70,12 +85,11 @@ public class Hooks {
 					scenario.attach(screenshotBytes, "image/png", "Failure Screenshot");
 
 					// ✅ Attach to Extent
-					String relativePath = "screenshots/" + screenshotFileName;
+					String relativePath = "/screenshots/" + screenshotFileName;
 
 					// Create extent test and attach screenshot
 					Hooks.test = Hooks.extent.createTest(scenarioName);
-					Hooks.test.fail("Scenario failed ❌")
-							  .addScreenCaptureFromPath(relativePath);
+					Hooks.test.fail("Scenario failed ❌").addScreenCaptureFromPath(relativePath);
 
 				} else {
 					scenario.log("⚠️ Screenshot not available due to an internal error.");
@@ -88,10 +102,27 @@ public class Hooks {
 		}
 
 		BaseTest.quitBrowser();
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		System.out.println("--------------- Scenario Ends and browser closed -----------------------");
 	}
 
+	@AfterAll
+	public static void afterExecution() throws IOException {
+
+		File testOutputDir = new File(System.getProperty("user.dir") + "/test-output");
+		File[] files = testOutputDir.listFiles();
+
+		for (File file : files) {
+			if (!file.getName().equals("screenshots") && !file.getName().equals("sparkReport")) {
+				if (file.isDirectory()) {
+					FileUtils.deleteDirectory(file);
+				} else {
+					file.delete();
+				}
+			}
+		}
+
+	}
 
 }
 
