@@ -14,12 +14,11 @@ import io.cucumber.junit.CucumberOptions;
     		"summary", 
             "json:target/cucumber-report/cucumber.json",
             "html:target/cucumber-report/cucumber.html",
-            "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
+    		"stepDefinition.TestStepListener" // ✅ Added: Custom listener for step logging
     		},
     monochrome = true,
     tags = "@LoginTestRun"
 )
-
 
 public class Runner {
 	
