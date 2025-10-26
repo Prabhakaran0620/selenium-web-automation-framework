@@ -1,6 +1,7 @@
 package stepDefinition;
 
 import baseClass.BaseTest;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import Utility.ConfigReader;
@@ -70,5 +71,26 @@ public class BaseStepDefinition extends BaseTest {
         waitForNSec(Integer.parseInt(seconds));
 		System.out.println("  *****  " + seconds + " Sec Wait Completed  *****");
     }
+    
+    @Then("Assert element with xpath {string} has value {string}")
+    public void assert_element_with_xpath_has_value(String xpath, String expectedValue) {
+        BaseTest.assertValueByXPath(xpath, expectedValue);
+		System.out.println("  *****  Assertion Verified  *****");
+    }
+    
+    @Then("Assert element with xpath {string} has contains {string}")
+    public void assert_element_with_xpath_has_contains(String xpath, String expectedValue) {
+        BaseTest.assertValueContainsByXPath(xpath, expectedValue);
+		System.out.println("  *****  Assertion Verified  *****");
+    }
+    
+    @And("Scroll down to the element of {string}")
+    public void scroll_down_to_element_of(String elementIdentifier) {
+    	BaseTest.scrollDownToElement(elementIdentifier);
+		System.out.println("  *****  Scrolled Down Sucessfully  *****");
+
+    }
+
+
 
 }

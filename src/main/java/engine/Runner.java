@@ -17,7 +17,7 @@ import io.cucumber.junit.CucumberOptions;
     		"stepDefinition.TestStepListener" // ✅ Added: Custom listener for step logging
     		},
     monochrome = true,
-    tags = "@LoginTestRun"
+    tags = "@DemoTestRun"
 )
 
 public class Runner {
