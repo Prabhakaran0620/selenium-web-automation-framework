@@ -36,24 +36,22 @@ public class Hooks {
 	public static void setupExtentReport() {
 		String reportPath = System.getProperty("user.dir") + "/test-output/SparkReport/ExtentReport.html";
 		spark = new ExtentSparkReporter(reportPath);
-		
+
 		// Configure report appearance
 		spark.config().setTheme(Theme.STANDARD);
 		spark.config().setDocumentTitle("Automation Test Report");
 		spark.config().setReportName("Test Execution Report");
 		spark.config().setTimeStampFormat("dd-MMM-yyyy HH:mm:ss");
-		
+
 		extent = new ExtentReports();
 		extent.attachReporter(spark);
-		
+
 		// Add environment details
 		extent.setSystemInfo("Environment", "QA");
-		extent.setSystemInfo("Application", ConfigReader.getProperty("baseURL"));
 		extent.setSystemInfo("Operating System", System.getProperty("os.name"));
 		extent.setSystemInfo("User Name", System.getProperty("user.name"));
 		extent.setSystemInfo("Java Version", System.getProperty("java.version"));
-		extent.setSystemInfo("Test Framework", "Cucumber + Selenium");
-		
+
 		System.out.println("✅ Extent Report initialized at: " + reportPath);
 	}
 
@@ -64,11 +62,11 @@ public class Hooks {
 			System.out.println("---------------- Scenario Starts -----------------------");
 			BaseTest.testcasename = scenario.getName();
 			System.out.println("Scenario Name ----> " + scenario.getName());
-			
+
 			// Create test in Extent Report at the start
 			Hooks.test = Hooks.extent.createTest(scenario.getName());
 			Hooks.test.info("Scenario: " + scenario.getName());
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new RuntimeException("Failed to load properties: " + e.getMessage());
@@ -84,9 +82,10 @@ public class Hooks {
 			if (scenario.getStatus().name().equalsIgnoreCase("PASSED")) {
 				scenarioStatusMap.put(scenarioName, "PASS");
 				System.out.println(scenarioName + " test Execution Passed");
-				
+
 				if (Hooks.test != null) {
-					Hooks.test.pass(MarkupHelper.createLabel("Scenario PASSED ✅", com.aventstack.extentreports.markuputils.ExtentColor.GREEN));
+					Hooks.test.pass(MarkupHelper.createLabel("Scenario PASSED ✅",
+							com.aventstack.extentreports.markuputils.ExtentColor.GREEN));
 				}
 
 			} else {
@@ -107,20 +106,22 @@ public class Hooks {
 					scenario.attach(screenshotBytes, "image/png", "Failure Screenshot");
 
 					// Calculate RELATIVE path from Extent Report to screenshot
-					File reportFile = new File(System.getProperty("user.dir") + "/test-output/SparkReport/ExtentReport.html");
+					File reportFile = new File(
+							System.getProperty("user.dir") + "/test-output/SparkReport/ExtentReport.html");
 					File screenshotFile = new File(screenshotPath);
-					
+
 					String relativePath = getRelativePath(reportFile.getParentFile(), screenshotFile);
-					
+
 					System.out.println("📸 Screenshot saved at: " + screenshotPath);
 					System.out.println("📊 Relative path for Extent: " + relativePath);
 
 					// Attach to Extent Report using relative path
 					if (Hooks.test != null) {
-						Hooks.test.fail(MarkupHelper.createLabel("Scenario FAILED ❌", com.aventstack.extentreports.markuputils.ExtentColor.RED));
-						Hooks.test.fail("Failure Screenshot:", 
-							com.aventstack.extentreports.MediaEntityBuilder.createScreenCaptureFromPath(relativePath).build());
-						
+						Hooks.test.fail(MarkupHelper.createLabel("Scenario FAILED ❌",
+								com.aventstack.extentreports.markuputils.ExtentColor.RED));
+						Hooks.test.fail("Failure Screenshot:", com.aventstack.extentreports.MediaEntityBuilder
+								.createScreenCaptureFromPath(relativePath).build());
+
 						// Add failure details if available
 						if (scenario.getStatus().toString().contains("FAILED")) {
 							Hooks.test.fail("Status: " + scenario.getStatus());
@@ -129,7 +130,8 @@ public class Hooks {
 				} else {
 					scenario.log("⚠️ Screenshot not available due to an internal error.");
 					if (Hooks.test != null) {
-						Hooks.test.fail(MarkupHelper.createLabel("Scenario FAILED ❌ (No screenshot available)", com.aventstack.extentreports.markuputils.ExtentColor.RED));
+						Hooks.test.fail(MarkupHelper.createLabel("Scenario FAILED ❌ (No screenshot available)",
+								com.aventstack.extentreports.markuputils.ExtentColor.RED));
 					}
 				}
 			}
@@ -162,6 +164,22 @@ public class Hooks {
 	@AfterAll
 	public static void afterExecution() throws IOException {
 		if (extent != null) {
+
+			// --- NEW: Calculate and add test summary to system info ---
+			long total = allScenarios.size();
+			long passed = scenarioStatusMap.values().stream().filter(s -> s.equals("PASS")).count();
+			long failed = scenarioStatusMap.values().stream().filter(s -> s.equals("FAIL")).count();
+			long skipped = total - (passed + failed); // Calculates SKIPPED scenarios
+
+			extent.setSystemInfo("Total Scenarios", String.valueOf(total));
+			extent.setSystemInfo("Total Passed", String.valueOf(passed));
+			extent.setSystemInfo("Total Failed", String.valueOf(failed));
+			extent.setSystemInfo("Total Skipped", String.valueOf(skipped));
+
+			System.out.println("📊 Test Summary Added: Total=" + total + ", Passed=" + passed + ", Failed=" + failed
+					+ ", Skipped=" + skipped);
+			// -------------------------------------------------------------
+
 			extent.flush();
 			System.out.println("✅ Extent Report flushed successfully!");
 		}
@@ -172,7 +190,8 @@ public class Hooks {
 
 		if (files != null) {
 			for (File file : files) {
-				if (!file.getName().equalsIgnoreCase("screenshots") && !file.getName().equalsIgnoreCase("SparkReport")) {
+				if (!file.getName().equalsIgnoreCase("screenshots")
+						&& !file.getName().equalsIgnoreCase("SparkReport")) {
 					if (file.isDirectory()) {
 						FileUtils.deleteDirectory(file);
 					} else {
