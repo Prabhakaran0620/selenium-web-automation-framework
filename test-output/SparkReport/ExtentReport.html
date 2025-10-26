@@ -35,7 +35,7 @@
 <a href="#"><span class="badge badge-primary">Test Execution Report</span></a>
 </li>
 <li class="m-r-10">
-<a href="#"><span class="badge badge-primary">21-Oct-2025 23:27:56</span></a>
+<a href="#"><span class="badge badge-primary">26-Oct-2025 16:07:52</span></a>
 </li>
 </ul>
 </div>
@@ -45,11 +45,6 @@
 <li class="nav-item dropdown" onclick="toggleView('test-view')">
 <a id="nav-test" class="dropdown-toggle" href="#">
 <span class="ico"><i class="fa fa-list"></i></span>
-</a>
-</li>
-<li class="nav-item dropdown" onclick="toggleView('exception-view')">
-<a id="nav-exception" class="dropdown-toggle" href="#">
-<span class="ico"><i class="fa fa-bug"></i></span>
 </a>
 </li>
 <li class="nav-item dropdown" onclick="toggleView('dashboard-view')">
@@ -72,7 +67,6 @@
 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-exclamation-circle"></i></a>
 <ul id="status-toggle" class="dropdown-menu dropdown-md p-v-0">
 <a class="dropdown-item" status="pass" href="#"><span>Pass</span><span class="status success"></span></a>
-<a class="dropdown-item" status="fail" href="#"><span>Fail</span><span class="status danger"></span></a>
 <div class="dropdown-divider"></div>
 <a status="clear" class="dropdown-item" href="#"><span>Clear</span><span class="pull-right"><i class="fa fa-close"></i></span></a>
 </ul>
@@ -85,9 +79,9 @@
           tag=""
           device="">
           <div class="test-detail">
-            <p class="name">TC01_Login_Verify login functionality with valid user credentials</p>
+            <p class="name">TC01_DemoQA_Verify Text Box Components in DemoQA web application</p>
             <p class="text-sm">
-              <span>11:27:57 pm</span> / <span>00:00:30:013</span>
+              <span>4:07:53 PM</span> / <span>00:00:40:277</span>
               <span class="badge pass-bg log float-right">Pass</span>
             </p>
           </div>
@@ -95,10 +89,10 @@
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-pass">TC01_Login_Verify login functionality with valid user credentials</h5>
-<span class='badge badge-success'>10.21.2025 11:27:57 pm</span>
-<span class='badge badge-danger'>10.21.2025 11:28:27 pm</span>
-<span class='badge badge-default'>00:00:30:013</span>
+<h5 class="test-status text-pass">TC01_DemoQA_Verify Text Box Components in DemoQA web application</h5>
+<span class='badge badge-success'>10.26.2025 4:07:53 PM</span>
+<span class='badge badge-danger'>10.26.2025 4:08:33 PM</span>
+<span class='badge badge-default'>00:00:40:277</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
 <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
 <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
@@ -111,218 +105,100 @@
   <tbody>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>11:27:57 pm</td>
+        <td>4:07:53 PM</td>
         <td>
-          Scenario: TC01_Login_Verify login functionality with valid user credentials
+          Scenario: TC01_DemoQA_Verify Text Box Components in DemoQA web application
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log pass-bg">Pass</span></td>
-        <td>11:28:06 pm</td>
+        <td>4:07:59 PM</td>
         <td>
-          Given Open "baseURL" website in "chrome" browser
+          Given Open "demoQa" website in "chrome" browser
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log pass-bg">Pass</span></td>
-        <td>11:28:09 pm</td>
+        <td>4:08:05 PM</td>
         <td>
-          When Enter value "config:practiceUsername" into "Username"
+          When Scroll down to the element of "elements"
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log pass-bg">Pass</span></td>
-        <td>11:28:12 pm</td>
+        <td>4:08:07 PM</td>
         <td>
-          And Enter value "config:practiceUserPassword" into "Password"
+          And Hover and click on "elements"
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log pass-bg">Pass</span></td>
-        <td>11:28:14 pm</td>
+        <td>4:08:13 PM</td>
         <td>
-          And Hover and click on "loginButton"
+          And Wait for element "demoQaHomePage" to load
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log pass-bg">Pass</span></td>
-        <td>11:28:19 pm</td>
+        <td>4:08:16 PM</td>
         <td>
-          And Wait for "5" seconds
+          And Hover and click on "textBox"
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log pass-bg">Pass</span></td>
-        <td>11:28:25 pm</td>
+        <td>4:08:22 PM</td>
         <td>
-          And Wait for element "practiceHomePage" to load
+          And Enter value "config:demoQA_fullName" into "fullName_textBox"
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log pass-bg">Pass</span></td>
-        <td>11:28:26 pm</td>
+        <td>4:08:25 PM</td>
         <td>
-          Then Check "practiceHomePage" is displayed
+          And Enter value "config:demoQA_Email" into "email_textBox"
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log pass-bg">Pass</span></td>
-        <td>11:28:27 pm</td>
+        <td>4:08:28 PM</td>
+        <td>
+          And Enter value "config:demoQa_Address" into "currentAddress_textBox"
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>4:08:31 PM</td>
+        <td>
+          And Enter value "config:demoQa_Address" into "permananentAddress_textBox"
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>4:08:32 PM</td>
+        <td>
+          And Hover and click on "textBox_Submit"
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>4:08:32 PM</td>
+        <td>
+          Then Assert element with xpath "textBoxOutput" has contains "test"
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>4:08:33 PM</td>
         <td>
           And Close browser
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log pass-bg">Pass</span></td>
-        <td>11:28:27 pm</td>
+        <td>4:08:33 PM</td>
         <td>
           <span class='badge white-text green'>Scenario PASSED ✅</span>
-        </td>
-      </tr>
-  </tbody>
-</table>
-</div>
-          </div>
-        </li>
-        <li class="test-item"  status="fail" test-id="2"
-          author=""
-          tag=""
-          device="">
-          <div class="test-detail">
-            <p class="name">TC02_Login_Verify login functionality with valid user credentials</p>
-            <p class="text-sm">
-              <span>11:28:29 pm</span> / <span>00:00:18:149</span>
-              <span class="badge fail-bg log float-right">Fail</span>
-            </p>
-          </div>
-          <div class="test-contents d-none">
-<div class="detail-head">
-<div class="p-v-10">
-<div class="info">
-<h5 class="test-status text-fail">TC02_Login_Verify login functionality with valid user credentials</h5>
-<span class='badge badge-success'>10.21.2025 11:28:29 pm</span>
-<span class='badge badge-danger'>10.21.2025 11:28:47 pm</span>
-<span class='badge badge-default'>00:00:18:149</span>
-&middot; <span class='uri-anchor badge badge-default'>#test-id=2</span>
-<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
-<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
-<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
-</div>
-</div>
-</div><div class="detail-body mt-4">
-<table class="table table-sm">
-  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
-  <tbody>
-      <tr class="event-row">
-        <td><span class="badge log info-bg">Info</span></td>
-        <td>11:28:29 pm</td>
-        <td>
-          Scenario: TC02_Login_Verify login functionality with valid user credentials
-        </td>
-      </tr>
-      <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>11:28:41 pm</td>
-        <td>
-          Given Open "baseURL" website in "firefox" browser
-        </td>
-      </tr>
-      <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>11:28:44 pm</td>
-        <td>
-          When Enter value "config:practiceUsername" into "Username"
-        </td>
-      </tr>
-      <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>11:28:46 pm</td>
-        <td>
-          And Enter value "config:practiceUserPassword" into "Password"
-        </td>
-      </tr>
-      <tr class="event-row">
-        <td><span class="badge log fail-bg">Fail</span></td>
-        <td>11:28:47 pm</td>
-        <td>
-          And Hover and click on "loginButton"
-        </td>
-      </tr>
-      <tr class="event-row">
-        <td><span class="badge log fail-bg">Fail</span></td>
-        <td>11:28:47 pm</td>
-        <td>
-          <textarea readonly class="code-block">org.openqa.selenium.interactions.MoveTargetOutOfBoundsException: Move target (729, 739) is out of bounds of viewport dimensions (1536, 731)
-Build info: version: '4.12.1', revision: '8e34639b11'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '23.0.1'
-Driver info: org.openqa.selenium.firefox.FirefoxDriver
-Command: [cf51f464-cdc9-4be6-a8f5-7b7af12cb046, actions {actions=[org.openqa.selenium.interactions.Sequence@21c34bf8]}]
-Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 144.0, moz:accessibilityChecks: false, moz:buildID: 20251009125714, moz:geckodriverVersion: 0.36.0, moz:headless: false, moz:platformVersion: 10.0, moz:processID: 14684, moz:profile: C:\Users\HP\AppData\Local\T..., moz:shutdownTimeout: 60000, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, userAgent: Mozilla/5.0 (Windows NT 10....}
-Session ID: cf51f464-cdc9-4be6-a8f5-7b7af12cb046
-	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:501)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:485)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:196)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:171)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
-	at org.openqa.selenium.remote.RemoteWebDriver.perform(RemoteWebDriver.java:688)
-	at org.openqa.selenium.interactions.Actions$BuiltAction.perform(Actions.java:605)
-	at org.openqa.selenium.interactions.Actions.perform(Actions.java:574)
-	at baseClass.BaseTest.hoverAndClickElement(BaseTest.java:190)
-	at stepDefinition.BaseStepDefinition.hover_click_field(BaseStepDefinition.java:45)
-	at ✽.Hover and click on "loginButton"(file:///C:/Users/HP/git/selenium-web-automation-framework/src/test/java/features/01_Login.feature:18)
-</textarea>
-          
-        </td>
-      </tr>
-      <tr class="event-row">
-        <td><span class="badge log skip-bg">Skip</span></td>
-        <td>11:28:47 pm</td>
-        <td>
-          And Wait for element "practiceHomePage" to load
-        </td>
-      </tr>
-      <tr class="event-row">
-        <td><span class="badge log skip-bg">Skip</span></td>
-        <td>11:28:47 pm</td>
-        <td>
-          Then Check "practiceHomePage" is displayed
-        </td>
-      </tr>
-      <tr class="event-row">
-        <td><span class="badge log skip-bg">Skip</span></td>
-        <td>11:28:47 pm</td>
-        <td>
-          And Close browser
-        </td>
-      </tr>
-      <tr class="event-row">
-        <td><span class="badge log fail-bg">Fail</span></td>
-        <td>11:28:47 pm</td>
-        <td>
-          <span class='badge white-text red'>Scenario FAILED ❌</span>
-        </td>
-      </tr>
-      <tr class="event-row">
-        <td><span class="badge log fail-bg">Fail</span></td>
-        <td>11:28:47 pm</td>
-        <td>
-          Failure Screenshot:
-    <div class="row mb-3"><div class="col-md-3">
-<img data-featherlight='../screenshots/TC02_Login_Verify_login_functionality_with_valid_user_credentials_20251021_232847.png' src="../screenshots/TC02_Login_Verify_login_functionality_with_valid_user_credentials_20251021_232847.png">
-    
-    </div></div>
-        </td>
-      </tr>
-      <tr class="event-row">
-        <td><span class="badge log fail-bg">Fail</span></td>
-        <td>11:28:47 pm</td>
-        <td>
-          Status: FAILED
         </td>
       </tr>
   </tbody>
@@ -339,67 +215,18 @@ Session ID: cf51f464-cdc9-4be6-a8f5-7b7af12cb046
 </div>
 <div class="test-content-detail"><div class="detail-body"></div></div>
 </div></div>
-<div class="test-wrapper row view exception-view attributes-view">
-<div class="test-list">
-<div class="test-list-tools">
-<ul class="tools pull-left"><li><a href=""><span class="font-size-14">Exception</span></a></li></ul>
-<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">1</span></a></li></ul>
-</div>
-<div class="test-list-wrapper scrollable">
-<ul class="test-list-item">
-<li class="test-item">
-<div class="test-detail">
-<span class="meta">
-<span class='badge log badge-danger'>1</span>
-</span>
-<p class="name">org.openqa.selenium.interactions.MoveTargetOutOfBoundsException</p>
-<p class="duration text-sm">1 tests</p>
-</div>
-<div class="test-contents d-none">
-<div class="info">
-<h4>org.openqa.selenium.interactions.MoveTargetOutOfBoundsException</h4>
-<span status="fail" class='badge log badge-danger'>1 failed</span>
-</div>
-<table class='table table-sm mt-4'>
-<thead>
-<tr>
-<th class="status-col">Status</th>
-<th class="timestamp-col">Timestamp</th>
-<th>TestName</th>
-</tr>
-</thead>
-<tbody>
-<tr class="tag-test-status" status="fail">
-<td><span class="badge log fail-bg">Fail</span></td>
-<td>23:28:29 pm</td>
-<td>
-<a href="#" class="linked" test-id='2' id='2'>TC02_Login_Verify login functionality with valid user credentials</a>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="test-content scrollable">
-<div class="test-content-detail">
-<div class="detail-body"></div>
-</div>
-</div>
-</div><div class="container-fluid p-4 view dashboard-view">
+<div class="container-fluid p-4 view dashboard-view">
 <div class="row">
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Started</p>
-<h3>21-Oct-2025 23:27:56</h3>
+<h3>26-Oct-2025 16:07:52</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Ended</p>
-<h3>21-Oct-2025 23:28:51</h3>
+<h3>26-Oct-2025 16:08:35</h3>
 </div></div>
 </div>
 <div class="col-md-3">
@@ -411,7 +238,7 @@ Session ID: cf51f464-cdc9-4be6-a8f5-7b7af12cb046
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0 text-fail">Tests Failed</p>
-<h3>1</h3>
+<h3>0</h3>
 </div></div>
 </div>
 </div>
@@ -427,12 +254,12 @@ Session ID: cf51f464-cdc9-4be6-a8f5-7b7af12cb046
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='50%'>
+<div><small data-tooltip='100%'>
 <b>1</b> tests passed
 </small>
 </div>
 <div>
-<small data-tooltip='50%'><b>1</b> tests failed,
+<small data-tooltip='0%'><b>0</b> tests failed,
 <b>0</b> skipped, <b data-tooltip='0%'>0</b> others
 </small>
 </div>
@@ -450,10 +277,10 @@ Session ID: cf51f464-cdc9-4be6-a8f5-7b7af12cb046
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='54%'><b>12</b> events passed</small></div>
+<div><small data-tooltip='92%'><b>13</b> events passed</small></div>
 <div>
-<small data-tooltip='22%'><b>5</b> events failed,
-<b data-tooltip='%'>5</b> others
+<small data-tooltip='0%'><b>0</b> events failed,
+<b data-tooltip='%'>1</b> others
 </small>
 </div>
 </div>
@@ -469,7 +296,7 @@ Session ID: cf51f464-cdc9-4be6-a8f5-7b7af12cb046
 </div></div>
 <script>
 var timeline = {
-"TC01_Login_Verify login functionality with valid user credentials":30.013,"TC02_Login_Verify login functionality with valid user credentials":18.149
+"TC01_DemoQA_Verify Text Box Components in DemoQA web application":40.277
 };
 </script>
 <div class="row">
@@ -484,24 +311,32 @@ var timeline = {
 <td>QA</td>
 </tr>
 <tr>
-<td>Application</td>
-<td></td>
-</tr>
-<tr>
 <td>Operating System</td>
 <td>Windows 11</td>
 </tr>
 <tr>
 <td>User Name</td>
-<td>HP</td>
+<td>Prabhakaran</td>
 </tr>
 <tr>
 <td>Java Version</td>
-<td>23.0.1</td>
+<td>21.0.9</td>
 </tr>
 <tr>
-<td>Test Framework</td>
-<td>Cucumber + Selenium</td>
+<td>Total Scenarios</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Total Passed</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Total Failed</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Total Skipped</td>
+<td>0</td>
 </tr>
 </tbody>
 </table></div>
@@ -513,7 +348,7 @@ var timeline = {
 var statusGroup = {
 parentCount: 5,
 passParent: 1,
-failParent: 1,
+failParent: 0,
 warningParent: 0,
 skipParent: 0,
 childCount: 5,
@@ -529,11 +364,11 @@ warningGrandChild: 0,
 skipGrandChild: 0,
 infoGrandChild: 0,
 eventsCount: 5,
-passEvents: 12,
-failEvents: 5,
+passEvents: 13,
+failEvents: 0,
 warningEvents: 0,
-skipEvents: 3,
-infoEvents: 2
+skipEvents: 0,
+infoEvents: 1
 };
 </script>        </div>
       </div>

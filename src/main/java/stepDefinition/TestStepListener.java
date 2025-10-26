@@ -18,7 +18,7 @@ public class TestStepListener implements EventListener {
 			String keyword = testStep.getStep().getKeyword();
 			
 			// Log to console
-			System.out.println(keyword + stepText);
+//			System.out.println(keyword + stepText);
 		}
 	}
 
