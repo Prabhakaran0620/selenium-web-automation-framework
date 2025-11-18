@@ -47,6 +47,21 @@ Scenario: TC03_DemoQA_Verify Checkbox Box expand all and collapse all features i
     And Hover and click on "private_checkBox"
     And Hover and click on "private_checkBoxConfirmation"    
     And Close browser
+    
+# RadioButton
+Scenario: TC04_DemoQA_Verify the Radio button Components base functionality in DemoQA web application
+    Given Open "demoQa" website in "chrome" browser
+    When Scroll down to the element of "elements"
+    And Hover and click on "elements"
+    And Wait for element "demoQaHomePage" to load
+    Then Check "demoQaHomePage" is displayed 
+    And Hover and click on "radioButton"
+    Then Check "radioButtonHomePage" is displayed
+    And Hover and click on "yesRadioButton"
+    Then Check "yes_confirmation" is displayed
+    And Hover and click on "impressiveRadioButton"
+    Then Check "impressive_confirmation" is displayed
+    And Close browser
 
     
 
